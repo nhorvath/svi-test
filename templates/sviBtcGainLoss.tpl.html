@@ -1,0 +1,29 @@
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Transaction</th>
+				<th>Qty</th>
+				<th>Cost</th>
+				<th>Market Value</th>
+				<th>Gain/Loss</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="row in data">
+				<td data-ng-bind="::row.timestamp|date:'medium'"></td>
+				<td data-ng-bind="::row.qty"></td>
+				<td data-ng-bind="::row.cost|currency"></td>
+				<td data-ng-bind="row.marketValue|currency"></td>
+				<td data-ng-bind="row.gainLoss|currency"></td>
+			</tr>
+			<tr data-ng-if="totals">
+				<th>Totals</th>
+				<td data-ng-bind="totals.qty"></td>
+				<td data-ng-bind="totals.cost|currency"></td>
+				<td data-ng-bind="totals.marketValue|currency"></td>
+				<td data-ng-bind="totals.gainLoss|currency"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
