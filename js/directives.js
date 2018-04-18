@@ -8,6 +8,8 @@ angular.module('directives', [])
 			'wallet': '@'
 		},
 		controller: function ($scope, $attrs, $element) {
+			$scope.wallet = $attrs.wallet || '1AJbsFZ64EpEfS5UAjAfcUG8pH8Jn3rn1F';
+
 			$scope.data = [];
 			$scope.totals = null;
 			$scope.marketPrice = 0;
@@ -33,12 +35,14 @@ angular.module('directives', [])
 				}
 			};
 
-			blockchain.getTransactions('1AJbsFZ64EpEfS5UAjAfcUG8pH8Jn3rn1F').then(function (data) {
-				$scope.data = data;
-				calculatePrices();
+			$scope.$watch('wallet', function() {
+				blockchain.getTransactions($scope.wallet).then(function (data) {
+					$scope.data = data;
+					calculatePrices();
+				});
 			});
 
-			blockchain.getMarketPrice('2018-03-12').then(function (value) {
+			blockchain.getMarketPrice().then(function (value) {
 				$scope.marketPrice = value;
 			});
 
