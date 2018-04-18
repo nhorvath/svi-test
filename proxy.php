@@ -17,7 +17,7 @@ switch ($_GET['service']) {
 		if (!$_GET['address']) {
 			trigger_error('address is required');
 		}
-		$url = 'https://blockchain.info/rawaddr/' . urlencode($_GET['address']);
+		$url = 'https://blockchain.info/rawaddr/' . urlencode($_GET['address']) . '?filter=2&limit=20';
 		break;
 	default:
 		trigger_error('Unsupported Service: '.htmlspecialchars($_GET['service']));
