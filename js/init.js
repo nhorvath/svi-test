@@ -1,5 +1,5 @@
 $(window).ready(function() {
-	angular.module('myApp', ['services', 'directives'])
+	angular.module('myApp', ['services', 'directives', 'filters'])
 		.controller('main', function($scope){
 		});
 
