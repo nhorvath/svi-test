@@ -1,9 +1,12 @@
 <?php
 
+/*
+ * Simple PHP script to pass through webservices requests to get around CORS issues.
+ */
+
 switch ($_GET['service']) {
 	case 'blockchain-24hrprice':
 		$url = 'https://blockchain.info/q/24hrprice';
-		break;
 	case 'blockchain-historicalPrice':
 		if (!$_GET['timestamp']) {
 			trigger_error('timestamp is required');
